@@ -1,0 +1,5 @@
+include LICENSE.txt
+recursive-include aldryn_social_sharing/templates *
+recursive-include aldryn_social_sharing/static *
+recursive-include aldryn_social_sharing/migrations *
+recursive-exclude * *.pyc

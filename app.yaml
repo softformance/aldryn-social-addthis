@@ -1,0 +1,16 @@
+name: Social Sharing
+package-name: aldryn-social-sharing
+url: https://github.com/aldryn/aldryn-social-sharing
+author:
+  name: Divio AG
+  url: https://www.divio.ch
+installed-apps:
+  - filer
+  - easy_thumbnails
+  - social_tags
+  - aldryn_social_sharing
+version: 0.0.7
+description: Share CMS content via social media. 
+license:
+  name: BSD
+  text: !literal-include LICENSE.txt
