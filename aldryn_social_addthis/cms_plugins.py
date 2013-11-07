@@ -4,16 +4,14 @@ from django.utils.translation import ugettext_lazy as _
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 
-from aldryn_social_sharing.models import Like, Mail, Links
+from aldryn_social_addthis.models import Like, Mail, Links
 
 
 class LikePlugin(CMSPluginBase):
 
     model = Like
-    name = _('Like Plugin')
-    render_template = 'aldryn_social_sharing/plugins/like.html'
-
-    module = 'Social'
+    name = _('Share Button')
+    render_template = 'aldryn_social_addthis/plugins/like.html'
 
     fieldsets = [
         (
@@ -41,34 +39,8 @@ class MailPlugin(CMSPluginBase):
 
     model = Mail
     name = _('Mail Plugin')
-    render_template = 'aldryn_social_sharing/plugins/mail.html'
-
-    module = 'Social'
 
     def render(self, context, instance, placeholder):
-        context['instance'] = instance
-        context['subject'] = instance.subject.replace(' ', '%20')
-        context['body'] = instance.body.replace(' ', '%20')
         return context
 
 plugin_pool.register_plugin(MailPlugin)
-
-
-class LinksPlugin(CMSPluginBase):
-
-    model = Links
-    name = _('Links')
-    render_template = 'aldryn_social_sharing/plugins/links.html'
-
-    module = 'Social'
-
-    def render(self, context, instance, placeholder):
-        context['instance'] = instance
-        context['links'] = {}
-        for link in instance.links:
-            value = getattr(instance, link, False)
-            if value:
-                context['links'][link] = value
-        return context
-
-plugin_pool.register_plugin(LinksPlugin)

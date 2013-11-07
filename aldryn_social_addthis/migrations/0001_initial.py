@@ -20,7 +20,7 @@ class Migration(SchemaMigration):
             ('description', self.gf('django.db.models.fields.CharField')(default=None, max_length=255, null=True, blank=True)),
             ('image', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['filer.Image'], null=True, blank=True)),
         ))
-        db.send_create_signal('aldryn_social_sharing', ['Like'])
+        db.send_create_signal('aldryn_social_addthis', ['Like'])
 
         # Adding model 'Mail'
         db.create_table('cmsplugin_mail', (
@@ -29,7 +29,7 @@ class Migration(SchemaMigration):
             ('body', self.gf('django.db.models.fields.TextField')(default='', blank=True)),
             ('append_url', self.gf('django.db.models.fields.BooleanField')(default=True)),
         ))
-        db.send_create_signal('aldryn_social_sharing', ['Mail'])
+        db.send_create_signal('aldryn_social_addthis', ['Mail'])
 
         # Adding model 'Links'
         db.create_table('cmsplugin_links', (
@@ -40,7 +40,7 @@ class Migration(SchemaMigration):
             ('linkedin', self.gf('django.db.models.fields.URLField')(max_length=200, null=True, blank=True)),
             ('rss', self.gf('django.db.models.fields.URLField')(max_length=200, null=True, blank=True)),
         ))
-        db.send_create_signal('aldryn_social_sharing', ['Links'])
+        db.send_create_signal('aldryn_social_addthis', ['Links'])
 
 
     def backwards(self, orm):
@@ -55,7 +55,7 @@ class Migration(SchemaMigration):
 
 
     models = {
-        'aldryn_social_sharing.like': {
+        'aldryn_social_addthis.like': {
             'Meta': {'object_name': 'Like', 'db_table': "'cmsplugin_like'", '_ormbases': ['cms.CMSPlugin']},
             'cmsplugin_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['cms.CMSPlugin']", 'unique': 'True', 'primary_key': 'True'}),
             'description': ('django.db.models.fields.CharField', [], {'default': 'None', 'max_length': '255', 'null': 'True', 'blank': 'True'}),
@@ -67,7 +67,7 @@ class Migration(SchemaMigration):
             'title': ('django.db.models.fields.CharField', [], {'default': 'None', 'max_length': '255', 'null': 'True', 'blank': 'True'}),
             'twitter': ('django.db.models.fields.BooleanField', [], {'default': 'False'})
         },
-        'aldryn_social_sharing.links': {
+        'aldryn_social_addthis.links': {
             'Meta': {'object_name': 'Links', 'db_table': "'cmsplugin_links'", '_ormbases': ['cms.CMSPlugin']},
             'cmsplugin_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['cms.CMSPlugin']", 'unique': 'True', 'primary_key': 'True'}),
             'facebook': ('django.db.models.fields.URLField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'}),
@@ -76,7 +76,7 @@ class Migration(SchemaMigration):
             'twitter': ('django.db.models.fields.URLField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'}),
             'xing': ('django.db.models.fields.URLField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'})
         },
-        'aldryn_social_sharing.mail': {
+        'aldryn_social_addthis.mail': {
             'Meta': {'object_name': 'Mail', 'db_table': "'cmsplugin_mail'", '_ormbases': ['cms.CMSPlugin']},
             'append_url': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'body': ('django.db.models.fields.TextField', [], {'default': "''", 'blank': 'True'}),
@@ -186,4 +186,4 @@ class Migration(SchemaMigration):
         }
     }
 
-    complete_apps = ['aldryn_social_sharing']
+    complete_apps = ['aldryn_social_addthis']

@@ -5,7 +5,7 @@
 {% if image_url %}{% set_tag 'image' image_url %}{% endif %}
 {% if instance.title %}{% set_tag 'title' instance.title %}{% endif %}
 {% if instance.description %}{% set_tag 'description' instance.description %}{% endif %}
-<div class="plugin_social_sharing">
+<div class="plugin_social_addthis">
 	<div class="addthis_toolbox addthis_default_style">
 	{% for button in instance.get_buttons %}
 		{{ button }}

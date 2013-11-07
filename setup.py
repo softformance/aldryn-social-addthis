@@ -22,13 +22,13 @@ CLASSIFIERS = [
 ]
 
 setup(
-    name='aldryn-social-sharing',
+    name='aldryn-social-addthis',
     version=__version__,
-    description='Allows sharing CMS content via social media',
+    description='Allows sharing content via addthis integration',
     author='Divio AG',
     author_email='info@divio.ch',
-    url='https://github.com/aldryn/aldryn-social-sharing',
-    packages=['aldryn_social_sharing'],
+    url='https://github.com/aldryn/aldryn-social-addthis',
+    packages=['aldryn_social_addthis'],
     license='LICENSE.txt',
     platforms=['OS Independent'],
     classifiers=CLASSIFIERS,

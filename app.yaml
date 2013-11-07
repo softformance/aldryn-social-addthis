@@ -1,6 +1,6 @@
-name: Social Sharing
-package-name: aldryn-social-sharing
-url: https://github.com/aldryn/aldryn-social-sharing
+name: Social AddThis
+package-name: aldryn-social-addthis
+url: https://github.com/aldryn/aldryn-social-addthis
 author:
   name: Divio AG
   url: https://www.divio.ch

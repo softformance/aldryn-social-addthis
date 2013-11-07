@@ -7,7 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from cms.models.pluginmodel import CMSPlugin
 from filer.fields.image import FilerImageField
 
-from aldryn_social_sharing import defaults
+from aldryn_social_addthis import defaults
 
 
 class Like(CMSPlugin):
@@ -19,11 +19,11 @@ class Like(CMSPlugin):
     email = models.BooleanField(_('email'), default=False)
 
     buttons = [
-        ('facebook', 'aldryn_social_sharing/likes/facebook.html'),
-        ('google', 'aldryn_social_sharing/likes/google.html'),
-        ('twitter', 'aldryn_social_sharing/likes/twitter.html'),
-        ('pinterest', 'aldryn_social_sharing/likes/pinterest.html'),
-        ('email', 'aldryn_social_sharing/likes/email.html')]
+        ('facebook', 'aldryn_social_addthis/likes/facebook.html'),
+        ('google', 'aldryn_social_addthis/likes/google.html'),
+        ('twitter', 'aldryn_social_addthis/likes/twitter.html'),
+        ('pinterest', 'aldryn_social_addthis/likes/pinterest.html'),
+        ('email', 'aldryn_social_addthis/likes/email.html')]
 
     title = models.CharField(
         _('title'),
