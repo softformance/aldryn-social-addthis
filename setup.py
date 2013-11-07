@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from setuptools import setup
-from aldryn_social_sharing import __version__
+from aldryn_social_addthis import __version__
 
 REQUIREMENTS = [
     'django-filer',

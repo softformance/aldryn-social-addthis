@@ -8,7 +8,7 @@ installed-apps:
   - filer
   - easy_thumbnails
   - social_tags
-  - aldryn_social_sharing
+  - aldryn_social_addthis
 version: 0.0.7
 description: Share CMS content via social media. 
 license:
