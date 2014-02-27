@@ -66,9 +66,10 @@ class Mail(CMSPlugin):
 class Links(CMSPlugin):
 
     facebook = models.URLField(_('facebook'), null=True, blank=True)
+    google = models.URLField(_('google'), null=True, blank=True)
     twitter = models.URLField(_('twitter'), null=True, blank=True)
     xing = models.URLField(_('xing'), null=True, blank=True)
     linkedin = models.URLField(_('linkedin'), null=True, blank=True)
     rss = models.URLField(_('rss'), null=True, blank=True)
 
-    links = ['facebook', 'twitter', 'xing', 'linkedin', 'rss']
+    AVAILABLE_LINKS = ('facebook', 'google', 'twitter', 'xing', 'linkedin', 'rss')
