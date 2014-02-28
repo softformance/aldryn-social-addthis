@@ -39,6 +39,7 @@ class MailPlugin(CMSPluginBase):
 
     model = Mail
     name = _('Mail Plugin')
+    render_template = 'aldryn_social_addthis/plugins/mail.html'
 
     def render(self, context, instance, placeholder):
         return context
