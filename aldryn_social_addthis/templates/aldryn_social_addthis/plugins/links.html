@@ -1,5 +1,7 @@
-<div class="plugin_social">
-    {% for network, link in links.items %}
-    <span class="link_element"><a href="{{ link }}"><img src="{{ STATIC_URL }}aldryn_social_addthis/icons/{{ network }}_link.png" alt=""></a></span>
+<div class="social-plugin">
+    {% for name, social_url, icon_url in links %}
+    <span class="social-link {{ name }}">
+        <a href="{{ social_url }}"><img src="{{ icon_url }}" alt="{{ name }}"></a>
+    </span>
     {% endfor %}
 </div>
