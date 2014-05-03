@@ -1,7 +1,7 @@
 <div class="social-plugin">
-    {% for name, social_url, icon_url in links %}
-    <span class="social-link {{ name }}">
-        <a href="{{ social_url }}"><img src="{{ icon_url }}" alt="{{ name }}"></a>
+    {% for network in networks %}
+    <span class="social-link {{ network.name }}">
+        <a href="{{ network.url }}"><img src="{{ network.icon_url }}" alt="{{ network.name }}"></a>
     </span>
     {% endfor %}
 </div>
