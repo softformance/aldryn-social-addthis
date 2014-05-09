@@ -15,6 +15,7 @@ from aldryn_social_addthis import defaults
 
 SOCIAL_NETWORKS = (
     ('facebook', _('Facebook')),
+    ('instagram', _('Instagram')),
     ('google', _('Google+')),
     ('twitter', _('Twitter')),
     ('youtube', _('YouTube')),
@@ -89,6 +90,7 @@ class Mail(CMSPlugin):
 class Links(CMSPlugin):
 
     facebook = models.URLField(_('Facebook'), null=True, blank=True)
+    instagram = models.URLField(_('Instagram'), null=True, blank=True)
     google = models.URLField(_('Google+'), null=True, blank=True)
     twitter = models.URLField(_('Twitter'), null=True, blank=True)
     youtube = models.URLField(_('YouTube'), null=True, blank=True)
