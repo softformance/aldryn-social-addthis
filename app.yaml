@@ -9,7 +9,7 @@ installed-apps:
   - easy_thumbnails
   - social_tags
   - aldryn_social_addthis
-version: 0.1.3
+version: 0.1.4
 description: Share CMS content via social media. 
 license:
   name: BSD
