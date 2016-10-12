@@ -6,6 +6,7 @@ REQUIREMENTS = [
     'django-filer',
     'django-social-tags',
     'pillow',
+    'Django>=1.8',
 ]
 
 CLASSIFIERS = [

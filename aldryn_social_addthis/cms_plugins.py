@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from django.utils.translation import ugettext_lazy as _
-from django.templatetags.static import static
 
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
@@ -26,14 +25,10 @@ class LikePlugin(CMSPluginBase):
     ]
 
     def render(self, context, instance, placeholder):
-        context['instance'] = instance
-        context['placeholder'] = placeholder
         if instance.image_id:
-            r = context['request']
-            context['image_url'] = '%s://%s%s' % ('https' if r.is_secure() else 'http', r.get_host(), instance.image.url)
-        return context
-
-plugin_pool.register_plugin(LikePlugin)
+            request = context['request']
+            context['image_url'] = request.build_absolute_uri(instance.image.url)
+        return super(LikePlugin, self).render(context, instance, placeholder)
 
 
 class MailPlugin(CMSPluginBase):
@@ -41,11 +36,6 @@ class MailPlugin(CMSPluginBase):
     model = plugin_models.Mail
     name = _('Mail Plugin')
     render_template = 'aldryn_social_addthis/plugins/mail.html'
-
-    def render(self, context, instance, placeholder):
-        return context
-
-plugin_pool.register_plugin(MailPlugin)
 
 
 class LinksPlugin(CMSPluginBase):
@@ -63,8 +53,11 @@ class LinksPlugin(CMSPluginBase):
         return fieldsets
 
     def render(self, context, instance, placeholder):
-        context['instance'] = instance
         context['networks'] = instance.get_links()
-        return context
+        return super(LinksPlugin, self).render(context, instance, placeholder)
 
+
+
+plugin_pool.register_plugin(LikePlugin)
 plugin_pool.register_plugin(LinksPlugin)
+plugin_pool.register_plugin(MailPlugin)

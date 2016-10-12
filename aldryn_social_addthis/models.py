@@ -1,13 +1,16 @@
 # -*- coding: utf-8 -*-
+from collections import OrderedDict
+from functools import partial
+
 from django.db import models
 from django.conf import settings
 from django.template import Context
 from django.template.loader import get_template
 from django.templatetags.static import static
-from django.utils.datastructures import SortedDict
 from django.utils.translation import ugettext_lazy as _
 
 from cms.models.pluginmodel import CMSPlugin
+
 from filer.fields.image import FilerImageField
 
 from aldryn_social_addthis import defaults
@@ -24,9 +27,16 @@ SOCIAL_NETWORKS = (
     ('rss', _('RSS')),
 )
 
-SOCIAL_NETWORKS_BY_NAME = SortedDict(SOCIAL_NETWORKS)
+SOCIAL_NETWORKS_BY_NAME = OrderedDict(SOCIAL_NETWORKS)
 
 AVAILABLE_NETWORKS = getattr(settings, 'ALDRYN_SOCIAL_ADDTHIS_NETWORKS', SOCIAL_NETWORKS_BY_NAME.keys())
+
+CMSPluginField = partial(
+    models.OneToOneField,
+    to=CMSPlugin,
+    related_name='%(app_label)s_%(class)s',
+    parent_link=True,
+)
 
 
 class Like(CMSPlugin):
@@ -66,6 +76,7 @@ class Like(CMSPlugin):
         null=True,
         help_text=_('This setting can only be set once per page. If set twice, it will be overridden.')
     )
+    cmsplugin_ptr = CMSPluginField()
 
     def get_buttons(self):
         context = Context({'title': self.title,
@@ -85,6 +96,7 @@ class Mail(CMSPlugin):
         default=True,
         help_text=_('Append the current web address at the end of the mail.')
     )
+    cmsplugin_ptr = CMSPluginField()
 
 
 class Links(CMSPlugin):
@@ -97,6 +109,7 @@ class Links(CMSPlugin):
     xing = models.URLField(_('XING'), null=True, blank=True)
     linkedin = models.URLField(_('LinkedIn'), null=True, blank=True)
     rss = models.URLField(_('RSS'), null=True, blank=True)
+    cmsplugin_ptr = CMSPluginField()
 
     def get_link(self, network):
         icon_path = self.get_plugin_class().ICON_URL % {'network': network}
