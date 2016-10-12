@@ -2,5 +2,4 @@ include LICENSE.txt
 recursive-include aldryn_social_addthis/templates *
 recursive-include aldryn_social_addthis/static *
 recursive-include aldryn_social_addthis/migrations *
-recursive-include aldryn_social_addthis/south_migrations *
 recursive-exclude * *.pyc
