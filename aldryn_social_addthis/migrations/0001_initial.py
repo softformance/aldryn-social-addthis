@@ -16,6 +16,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Like',
             fields=[
+                ('cmsplugin_ptr', models.OneToOneField(parent_link=True, related_name='aldryn_social_addthis_like', auto_created=True, primary_key=True, serialize=False, to='cms.CMSPlugin')),
                 ('facebook', models.BooleanField(default=False, verbose_name='facebook')),
                 ('google', models.BooleanField(default=False, verbose_name='google')),
                 ('twitter', models.BooleanField(default=False, verbose_name='twitter')),
@@ -23,7 +24,6 @@ class Migration(migrations.Migration):
                 ('email', models.BooleanField(default=False, verbose_name='email')),
                 ('title', models.CharField(default=None, max_length=255, blank=True, help_text='Uses the title of the browser window if empty.', null=True, verbose_name='title')),
                 ('description', models.CharField(default=None, max_length=255, null=True, verbose_name='description', blank=True)),
-                ('cmsplugin_ptr', models.OneToOneField(parent_link=True, related_name='aldryn_social_addthis_like', primary_key=True, serialize=False, to='cms.CMSPlugin')),
                 ('image', filer.fields.image.FilerImageField(blank=True, to='filer.Image', help_text='This setting can only be set once per page. If set twice, it will be overridden.', null=True, verbose_name='image')),
             ],
             options={
@@ -34,15 +34,12 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Links',
             fields=[
-                ('facebook', models.URLField(null=True, verbose_name='Facebook', blank=True)),
-                ('instagram', models.URLField(null=True, verbose_name='Instagram', blank=True)),
-                ('google', models.URLField(null=True, verbose_name='Google+', blank=True)),
-                ('twitter', models.URLField(null=True, verbose_name='Twitter', blank=True)),
-                ('youtube', models.URLField(null=True, verbose_name='YouTube', blank=True)),
-                ('xing', models.URLField(null=True, verbose_name='XING', blank=True)),
-                ('linkedin', models.URLField(null=True, verbose_name='LinkedIn', blank=True)),
-                ('rss', models.URLField(null=True, verbose_name='RSS', blank=True)),
-                ('cmsplugin_ptr', models.OneToOneField(parent_link=True, related_name='aldryn_social_addthis_links', primary_key=True, serialize=False, to='cms.CMSPlugin')),
+                ('cmsplugin_ptr', models.OneToOneField(parent_link=True, related_name='aldryn_social_addthis_links', auto_created=True, primary_key=True, serialize=False, to='cms.CMSPlugin')),
+                ('facebook', models.URLField(null=True, verbose_name='facebook', blank=True)),
+                ('twitter', models.URLField(null=True, verbose_name='twitter', blank=True)),
+                ('xing', models.URLField(null=True, verbose_name='xing', blank=True)),
+                ('linkedin', models.URLField(null=True, verbose_name='linkedin', blank=True)),
+                ('rss', models.URLField(null=True, verbose_name='rss', blank=True)),
             ],
             options={
                 'abstract': False,
@@ -52,10 +49,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Mail',
             fields=[
+                ('cmsplugin_ptr', models.OneToOneField(parent_link=True, related_name='aldryn_social_addthis_mail', auto_created=True, primary_key=True, serialize=False, to='cms.CMSPlugin')),
                 ('subject', models.CharField(max_length=100, verbose_name='subject')),
                 ('body', models.TextField(default=b'', verbose_name='body', blank=True)),
                 ('append_url', models.BooleanField(default=True, help_text='Append the current web address at the end of the mail.', verbose_name='append url')),
-                ('cmsplugin_ptr', models.OneToOneField(parent_link=True, related_name='aldryn_social_addthis_mail', primary_key=True, serialize=False, to='cms.CMSPlugin')),
             ],
             options={
                 'abstract': False,
