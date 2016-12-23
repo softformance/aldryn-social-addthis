@@ -1,0 +1,7 @@
+{
+    "package-name": "aldryn-social-addthis",
+    "installed-apps": [
+        "aldryn_social_addthis",
+        "filer"
+    ]
+}
