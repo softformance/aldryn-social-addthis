@@ -16,7 +16,7 @@ class LikePlugin(CMSPluginBase):
     fieldsets = [
         (
             None,
-            {'fields': ['facebook', 'google', 'twitter', 'pinterest', 'email']}
+            {'fields': ['facebook', 'twitter', 'pinterest', 'email']}
         ),
         (
             _('Advanced'),
@@ -55,7 +55,6 @@ class LinksPlugin(CMSPluginBase):
     def render(self, context, instance, placeholder):
         context['networks'] = instance.get_links()
         return super(LinksPlugin, self).render(context, instance, placeholder)
-
 
 
 plugin_pool.register_plugin(LikePlugin)

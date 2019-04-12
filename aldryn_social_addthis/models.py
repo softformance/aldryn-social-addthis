@@ -4,7 +4,6 @@ from functools import partial
 
 from django.db import models
 from django.conf import settings
-from django.template import Context
 from django.template.loader import get_template
 from django.templatetags.static import static
 from django.utils.translation import ugettext_lazy as _
@@ -19,7 +18,6 @@ from aldryn_social_addthis import defaults
 SOCIAL_NETWORKS = (
     ('facebook', _('Facebook')),
     ('instagram', _('Instagram')),
-    ('google', _('Google+')),
     ('twitter', _('Twitter')),
     ('youtube', _('YouTube')),
     ('xing', _('XING')),
@@ -42,14 +40,12 @@ CMSPluginField = partial(
 class Like(CMSPlugin):
 
     facebook = models.BooleanField(_('facebook'), default=False)
-    google = models.BooleanField(_('google'), default=False)
     twitter = models.BooleanField(_('twitter'), default=False)
     pinterest = models.BooleanField(_('pinterest'), default=False)
     email = models.BooleanField(_('email'), default=False)
 
     buttons = [
         ('facebook', 'aldryn_social_addthis/likes/facebook.html'),
-        ('google', 'aldryn_social_addthis/likes/google.html'),
         ('twitter', 'aldryn_social_addthis/likes/twitter.html'),
         ('pinterest', 'aldryn_social_addthis/likes/pinterest.html'),
         ('email', 'aldryn_social_addthis/likes/email.html')
@@ -79,8 +75,12 @@ class Like(CMSPlugin):
     cmsplugin_ptr = CMSPluginField()
 
     def get_buttons(self):
-        context = Context({'title': self.title,
-                           'description': self.description})
+
+        context = {
+            'title': self.title,
+            'description': self.description,
+            'image_url': self.image.url if self.image else None
+        }
         for button, template_path in self.buttons:
             if getattr(self, button):
                 template = get_template(template_path)
@@ -103,7 +103,6 @@ class Links(CMSPlugin):
 
     facebook = models.URLField(_('Facebook'), null=True, blank=True)
     instagram = models.URLField(_('Instagram'), null=True, blank=True)
-    google = models.URLField(_('Google+'), null=True, blank=True)
     twitter = models.URLField(_('Twitter'), null=True, blank=True)
     youtube = models.URLField(_('YouTube'), null=True, blank=True)
     xing = models.URLField(_('XING'), null=True, blank=True)
