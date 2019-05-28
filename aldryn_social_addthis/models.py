@@ -27,13 +27,14 @@ SOCIAL_NETWORKS = (
 
 SOCIAL_NETWORKS_BY_NAME = OrderedDict(SOCIAL_NETWORKS)
 
-AVAILABLE_NETWORKS = getattr(settings, 'ALDRYN_SOCIAL_ADDTHIS_NETWORKS', SOCIAL_NETWORKS_BY_NAME.keys())
+AVAILABLE_NETWORKS = getattr(settings, 'ALDRYN_SOCIAL_ADDTHIS_NETWORKS', list(SOCIAL_NETWORKS_BY_NAME.keys()))
 
 CMSPluginField = partial(
     models.OneToOneField,
     to=CMSPlugin,
     related_name='%(app_label)s_%(class)s',
     parent_link=True,
+    on_delete=models.deletion.CASCADE
 )
 
 

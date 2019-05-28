@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 from django.db import migrations, models
 import filer.fields.image
@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Like',
             fields=[
-                ('cmsplugin_ptr', models.OneToOneField(parent_link=True, related_name='aldryn_social_addthis_like', auto_created=True, primary_key=True, serialize=False, to='cms.CMSPlugin')),
+                ('cmsplugin_ptr', models.OneToOneField(parent_link=True, related_name='aldryn_social_addthis_like', auto_created=True, primary_key=True, serialize=False, to='cms.CMSPlugin', on_delete=models.deletion.CASCADE)),
                 ('facebook', models.BooleanField(default=False, verbose_name='facebook')),
                 ('google', models.BooleanField(default=False, verbose_name='google')),
                 ('twitter', models.BooleanField(default=False, verbose_name='twitter')),
@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
                 ('email', models.BooleanField(default=False, verbose_name='email')),
                 ('title', models.CharField(default=None, max_length=255, blank=True, help_text='Uses the title of the browser window if empty.', null=True, verbose_name='title')),
                 ('description', models.CharField(default=None, max_length=255, null=True, verbose_name='description', blank=True)),
-                ('image', filer.fields.image.FilerImageField(blank=True, to='filer.Image', help_text='This setting can only be set once per page. If set twice, it will be overridden.', null=True, verbose_name='image')),
+                ('image', filer.fields.image.FilerImageField(blank=True, to='filer.Image', help_text='This setting can only be set once per page. If set twice, it will be overridden.', null=True, verbose_name='image', on_delete=models.SET_NULL)),
             ],
             options={
                 'abstract': False,
@@ -34,7 +34,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Links',
             fields=[
-                ('cmsplugin_ptr', models.OneToOneField(parent_link=True, related_name='aldryn_social_addthis_links', auto_created=True, primary_key=True, serialize=False, to='cms.CMSPlugin')),
+                ('cmsplugin_ptr', models.OneToOneField(parent_link=True, related_name='aldryn_social_addthis_links', auto_created=True, primary_key=True, serialize=False, to='cms.CMSPlugin', on_delete=models.deletion.CASCADE)),
                 ('facebook', models.URLField(null=True, verbose_name='facebook', blank=True)),
                 ('twitter', models.URLField(null=True, verbose_name='twitter', blank=True)),
                 ('xing', models.URLField(null=True, verbose_name='xing', blank=True)),
@@ -49,7 +49,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Mail',
             fields=[
-                ('cmsplugin_ptr', models.OneToOneField(parent_link=True, related_name='aldryn_social_addthis_mail', auto_created=True, primary_key=True, serialize=False, to='cms.CMSPlugin')),
+                ('cmsplugin_ptr', models.OneToOneField(parent_link=True, related_name='aldryn_social_addthis_mail', auto_created=True, primary_key=True, serialize=False, to='cms.CMSPlugin', on_delete=models.deletion.CASCADE)),
                 ('subject', models.CharField(max_length=100, verbose_name='subject')),
                 ('body', models.TextField(default=b'', verbose_name='body', blank=True)),
                 ('append_url', models.BooleanField(default=True, help_text='Append the current web address at the end of the mail.', verbose_name='append url')),
