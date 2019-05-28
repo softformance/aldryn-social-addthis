@@ -70,7 +70,8 @@ class Like(CMSPlugin):
         verbose_name=_('image'),
         blank=True,
         null=True,
-        help_text=_('This setting can only be set once per page. If set twice, it will be overridden.')
+        help_text=_('This setting can only be set once per page. If set twice, it will be overridden.'),
+        on_delete=models.SET_NULL,
     )
     cmsplugin_ptr = CMSPluginField()
 
