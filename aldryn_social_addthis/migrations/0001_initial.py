@@ -51,7 +51,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('cmsplugin_ptr', models.OneToOneField(parent_link=True, related_name='aldryn_social_addthis_mail', auto_created=True, primary_key=True, serialize=False, to='cms.CMSPlugin', on_delete=models.deletion.CASCADE)),
                 ('subject', models.CharField(max_length=100, verbose_name='subject')),
-                ('body', models.TextField(default=b'', verbose_name='body', blank=True)),
+                ('body', models.TextField(default='', verbose_name='body', blank=True)),
                 ('append_url', models.BooleanField(default=True, help_text='Append the current web address at the end of the mail.', verbose_name='append url')),
             ],
             options={
